@@ -5,7 +5,8 @@
  * @version 0.1
  */
 public interface Edge210 {
-    /**
+
+	/**
      * Returns the first "from" vert on the edge.
      * @return Returns the first vert
      */
