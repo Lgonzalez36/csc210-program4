@@ -24,18 +24,5 @@ public interface Edge210 {
      */
     public double getWeight();
 
-    /**
-     * Returns the "other" vertex in the edge
-     * @param v This vert
-     * @return Returns the other vert; if v is not on the edge, then vert1 is returned
-     */
-    public int otherVert( int v);
-
-    /**
-     * Returns true if vert is part of the edge.
-     * @param v The vert to check
-     * @return Returns true if part of edge
-     */
-    public boolean hasVert( int v);
 
 }

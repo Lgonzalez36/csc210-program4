@@ -1,54 +1,60 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
-public class MyGraph implements Graph210 {
-    ArrayList<Edge210> edgeList = new ArrayList<>();
-    ArrayList<Edge210> allEdgeList = new ArrayList<>();
-    AdjacencyList arrayAdj = new AdjacencyList();
+/** 
+ * MyGraph Implements Graph210 and Collects
+ * the data to be used as Objects for 
+ * the other Classes 
+ * @author Luis Gonzalez 
+ */
+public class MyGraph   {
+ 
 
-    public MyEdge e;
-    private int numVerts;
-    private int numEdges;
-    private AdjacencyList adj;
+    
 
-   MyGraph(int numVerts, int numEdges, AdjacencyList adj){
-       this.numVerts = numVerts;
-       this.numEdges = numEdges;
-       this.adj = adj;
-   }
-
-    @Override
-    public int numVerts() {
-        return numVerts;
+    public MyGraph() {
     }
 
-    @Override
-    public int numEdges() {
-        return numEdges;
-    }
+	
 
-    @Override
-    public Edge210 addEdge(int v1, int v2, double weight) {
-        e = new MyEdge(v1, v2, weight);
-        edgeList.add(e);
-        return e;
-    }
+	public void writeToFile(int[] edgeTo, double[] distTo, int numEdges2, int numVerts2) {
+        double total_min_weight = 0.0;
+        int numEdges = numEdges2;
+        int numVerts = numVerts2;
+        try {
+            FileWriter myWriter = new FileWriter("C:\\Users\\luisg\\OneDrive\\Desktop\\Java\\Programs\\program04\\DATA\\GraphData.txt");
+            myWriter.write(String.format("%d",numVerts));
+            myWriter.write(System.lineSeparator()); //new line
+            myWriter.write(String.format("%d",numEdges));
+            myWriter.write(System.lineSeparator()); //new line
+            for( int i = 0; i< numVerts; i++){
+                myWriter.write(String.format("Edge: %d - %d   %.2f", i, edgeTo[i], distTo[i]));
+                total_min_weight += distTo[i];
+                myWriter.write(System.lineSeparator()); //new line
 
-    @Override
-    public ArrayList<Edge210> edges(int v) {
-        for (int i = 0; i <arrayAdj.list.length ; i++) {
-            LinkedList<MyEdge> adjlist = arrayAdj.list[i];
-            for (int j = 0; j <adjlist.size() ; j++) {
-                
             }
+            myWriter.write(String.format("Total minimum key:  %.2f", total_min_weight));
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
-		return null;
 
     }
 
-    @Override
-    public List<Edge210> allEdges() {
-        return allEdgeList;
-    }
+	public void createFile() {
+        try {
+            File myObj = new File("C:\\Users\\luisg\\OneDrive\\Desktop\\Java\\Programs\\program04\\DATA\\GraphData.txt");
+            if (myObj.createNewFile()) {
+              System.out.println("File created: " + myObj.getName());
+            } else {
+              System.out.println("File already exists.");
+            }
+          } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+          }
+        }
 }

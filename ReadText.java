@@ -3,16 +3,32 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Scanner;
+/** 
+ * ReadText has a menue and has a user
+ * select a file to read and proccess
+ * @author Luis Gonzalez 
+ */
 public class ReadText {
-    
+    /** Final delims to extract only vertices */
+    final String DELIMS = "[ ]+";
+    /** Class variable to store total numbers of vertices */
+    private int numVerts;
+    /** Class variable to store total numbers of edges */
+    private int numEdges;
+
+    /**
+     * Ctor for the main menue
+     */
     public ReadText(){
     }
 
-    MST compute = new MST();
-    final String DELIMS = "[ ]+";
-    private int numVerts;
-    private int numEdges;
-
+    /**
+     * Method to read the a file from user input
+     * then the file ULR will send it to the next method
+     * Will loop until user wants to exit
+     * files are found online and are not stored
+     * @throws IOException
+     */
 	public void readTxt() throws IOException {
         while (true){
             System.out.println();
@@ -55,22 +71,29 @@ public class ReadText {
             else if (commands == 6){
                 break;
             }
-
             System.out.println("------------------------------------------------------------------------------------------");
         }
 	}
 
+    /**
+     * Gets file and reads it line by line and sends info to 
+     * The first two lines are to read the number of Verts and Edges first
+     * then the rest of the data is automated
+     * the AdjacencyList Class for further processing
+     * After file is read, data is sent to MST Class
+     * @param urlString
+     * @throws IOException
+     */
     public void file(String urlString) throws IOException {
         URL url = new URL(urlString);
         BufferedReader read = new BufferedReader(new InputStreamReader(url.openStream()));
+        AdjacencyList adj = new AdjacencyList();
         String line;
-
         line = read.readLine();
         numVerts = Integer.parseInt(line);
         line = read.readLine();
         numEdges = Integer.parseInt(line);
-
-        AdjacencyList adj = new AdjacencyList(numVerts);
+        adj.makeAdjList(numVerts);
 
         while ((line = read.readLine()) != null) {
             String[] tokens = line.split(DELIMS);
@@ -78,11 +101,10 @@ public class ReadText {
             int v2 = Integer.parseInt(tokens[1]);
             Double weight = Double.parseDouble(tokens[2]);
             adj.addEdgeAdj(v1, v2, weight);
-            
         }
         read.close();
         adj.printGraph();
-        MyGraph g = new MyGraph(numVerts, numEdges, adj);
-        compute.PrimMST(g);
+        MST compute = new MST(numVerts, numEdges, adj);
+        compute.PrimMST();
     }
 }
