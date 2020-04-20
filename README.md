@@ -19,14 +19,11 @@ Luis Gonzalez, April 3, 2020
 4. Creative element
     * My menu
     * Added the total amount of weight for each results
-<<<<<<< HEAD
     * Added a progress bar
-=======
->>>>>>> df337b05688cdf8583b0e480b7ab5aaa0b2dbb9d
 
 5. Results
     * Results are in the data file
-
+    
 6. Other notes
 
 * V0.1 released on Mon Apr 6
