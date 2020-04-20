@@ -83,9 +83,6 @@ public class MST {
         double min = distTo[0];
         int minIndex = 0;
         for( int i=0; i< numVerts-1; i++){
-            if( i > 0){
-                break;
-            }
             for( int j=1; j< numVerts; j++){
                 if( min == 0  && marked[i]){
                     if( !marked[j] &&  distTo[j] < Double.POSITIVE_INFINITY){
@@ -97,7 +94,6 @@ public class MST {
                     if (  min > distTo[j]){
                         min = distTo[j];
                         minIndex = j;
-                        return minIndex;
                     }
                 }
             }

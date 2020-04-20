@@ -23,7 +23,7 @@ Luis Gonzalez, April 3, 2020
 
 5. Results
     * Results are in the data file
-    
+
 6. Other notes
 
 * V0.1 released on Mon Apr 6 Graph210
