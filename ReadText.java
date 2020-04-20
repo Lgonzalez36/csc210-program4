@@ -103,8 +103,21 @@ public class ReadText {
             adj.addEdgeAdj(v1, v2, weight);
         }
         read.close();
-        adj.printGraph();
+        spin();
         MST compute = new MST(numVerts, numEdges, adj);
         compute.PrimMST();
+    }
+    public void spin() {
+        char[] animationChars = new char[]{'|', '/', '-', '\\'};
+    
+        for (int i = 0; i <= 100; i++) {
+            System.out.print("  Processing Data: " + i + "% " + animationChars[i % 4] + "\r");
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        // https://kodejava.org/how-do-i-create-a-console-progress-bar/
     }
 }

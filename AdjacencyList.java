@@ -31,19 +31,6 @@ public class AdjacencyList {
     }
 
     /**
-     * Prints all of the Edges in the Adjacency list
-     */
-    public void printGraph(){
-        for (int i = 0; i <vertices ; i++) {
-            ArrayList<MyEdge> adjlist = list[i];
-            for (int j = 0; j <adjlist.size() ; j++) {
-                System.out.println("vertex-" + i + " is connected to " +
-                adjlist.get(j).getVert2() + " with weight " +  adjlist.get(j).getWeight());
-            }
-        }
-    }
-
-    /**
      * Makes a proper empty adjacency list
      * from the number of vertices given
      * @param vertices total number of vertices

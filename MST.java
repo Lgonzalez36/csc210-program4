@@ -55,7 +55,6 @@ public class MST {
         while( !pq.isEmpty()){
             MyEdge poll = pq.poll();
             int vert1 = poll.getVert1();
-            int vert2 = poll.getVert2();
             marked[vert1] = true;
             edges = cmpEdge.edges(vert1, pq.size());
             for( MyEdge e : edges){

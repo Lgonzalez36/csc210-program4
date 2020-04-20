@@ -29,7 +29,7 @@ public class MyGraph   {
             myWriter.write(System.lineSeparator()); //new line
             myWriter.write(String.format("%d",numEdges));
             myWriter.write(System.lineSeparator()); //new line
-            for( int i = 0; i< numVerts; i++){
+            for (int i = 0; i< numVerts; i++){
                 myWriter.write(String.format("Edge: %d - %d   %.2f", i, edgeTo[i], distTo[i]));
                 total_min_weight += distTo[i];
                 myWriter.write(System.lineSeparator()); //new line
