@@ -107,6 +107,10 @@ public class ReadText {
         MST compute = new MST(numVerts, numEdges, adj);
         compute.PrimMST();
     }
+
+    /**
+     * Method maks a cool loading effect
+     */
     public void spin() {
         char[] animationChars = new char[]{'|', '/', '-', '\\'};
     
