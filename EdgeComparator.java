@@ -1,14 +1,21 @@
 import java.util.Comparator;
 /** 
- * AdjacencyList Collects proper data to make an adjecency
- *  list of all the edges in the given undiredted graph
+ * EdgeComparator implments Comparator of MyEdges
+ * Sorts from weight from least to greatest
  * @author Luis Gonzalez 
  */
 public class EdgeComparator implements Comparator<MyEdge> {
 
+    /**
+     * Ctor of EdgeComparator
+     */
     public EdgeComparator(){
     }
 
+    /**
+     * compares two MyEdge Objects
+     * and returns the smallest graph weight
+     */
     @Override
     public int compare(MyEdge o1, MyEdge o2) {
          if ( o1.getWeight() > o2.getWeight()){
